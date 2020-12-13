@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:intl/intl.dart';
 
-class NewBirthdayScreen extends StatelessWidget {
+class NewBirthdayScreen extends StatefulWidget {
+  @override
+  _NewBirthdayScreenState createState() => _NewBirthdayScreenState();
+}
+
+class _NewBirthdayScreenState extends State<NewBirthdayScreen> {
+
+  int _selectedMonth;
+  int _selectedDay;
+
+  @override
+  void initState() {
+    this._selectedDay = DateTime.now().day;
+    this._selectedMonth = DateTime.now().month;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -10,32 +27,35 @@ class NewBirthdayScreen extends StatelessWidget {
       ),
       body: Container(
         margin: EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            TextField(
-              decoration: InputDecoration(
-                hintText: "Name",
+        child: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // person's name
+              TextField(
+                decoration: InputDecoration(
+                  hintText: "Name",
+                ),
               ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Expanded(child: TextField()),
-                SizedBox(width: 4),
-                Expanded(child: TextField()),
-                SizedBox(width: 4),
-                Expanded(child: TextField()),
-              ],
-            ),
-            // CalendarDatePicker(
-            //   initialDate: DateTime.now(),
-            //   firstDate: DateTime.parse("2020-01-01"),
-            //   lastDate: DateTime.parse("2020-12-31"),
-            //   onDateChanged: (newDate) => print(newDate),
-            //   initialCalendarMode: DatePickerMode.day,
-            // ),
-          ],
+              // birth date
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  DropdownButton<String>(
+                    items: <String>[]
+                        .map<DropdownMenuItem<String>>(
+                            (String value) => DropdownMenuItem<String>(
+                                  value: value,
+                                  child: Text(value),
+                                ))
+                        .toList(),
+                    onChanged: (newMonth) {},
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
       ),
     );

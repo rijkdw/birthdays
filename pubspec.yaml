@@ -33,6 +33,7 @@ dependencies:
   intl: ^0.16.1
   font_awesome_flutter: ^8.10.1
   flutter_local_notifications: ^3.0.2
+  flutter_datetime_picker: ^1.4.0
 
 dev_dependencies:
   flutter_test:
