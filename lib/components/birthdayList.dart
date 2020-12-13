@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'package:birthdays/components/birthdayTile.dart';
-import 'package:birthdays/objects/birthday.dart';
-import 'package:birthdays/objects/birthdayStore.dart';
+import 'package:birthdays/managers/birthdayStore.dart';
 
 class BirthdayList extends StatelessWidget {
   @override

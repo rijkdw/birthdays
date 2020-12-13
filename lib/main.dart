@@ -1,4 +1,4 @@
-import 'package:birthdays/objects/birthdayStore.dart';
+import 'package:birthdays/managers/birthdayStore.dart';
 import 'package:birthdays/screens/birthdayListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
