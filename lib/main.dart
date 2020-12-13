@@ -1,4 +1,6 @@
 import 'package:birthdays/managers/birthdayStore.dart';
+import 'package:birthdays/managers/notificationManager.dart';
+import 'package:birthdays/managers/themeManager.dart';
 import 'package:birthdays/screens/birthdayListScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,14 +14,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => BirthdayStore())
+        ChangeNotifierProvider(create: (_) => BirthdayStore()),
+        Provider(create: (_) => NotificationManager()),
+        ChangeNotifierProvider(create: (_) => ThemeManager())
       ],
-      child: MaterialApp(
+      builder: (context, _) => MaterialApp(
         title: 'Birthdays',
-        theme: ThemeData(
-          primarySwatch: Colors.red,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+        theme: Provider.of<ThemeManager>(context).themeData,
         home: BirthdayListScreen(),
       ),
     );

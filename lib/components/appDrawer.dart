@@ -1,11 +1,12 @@
 import 'package:birthdays/components/appDrawerItem.dart';
+import 'package:birthdays/managers/themeManager.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     Widget drawerHeader = DrawerHeader(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -60,6 +61,26 @@ class AppDrawer extends StatelessWidget {
       onTap: () {},
     );
 
+    Widget darkmodeSwitch = AppDrawerItem(
+      iconData: FontAwesomeIcons.lightbulb,
+      text: Provider.of<ThemeManager>(context).mode == AppThemeMode.light
+          ? "Light mode"
+          : "Dark mode",
+      onTap: () => Provider.of<ThemeManager>(context, listen: false).switchAppThemeMode(),
+    );
+
+    Provider.of<ThemeManager>(context).mode == AppThemeMode.light
+        ? AppDrawerItem(
+            iconData: FontAwesomeIcons.lightbulb,
+            text: "Light Mode",
+            onTap: () {},
+          )
+        : AppDrawerItem(
+            iconData: FontAwesomeIcons.lightbulb,
+            text: "Dark Mode",
+            onTap: () {},
+          );
+
     return Drawer(
       child: SingleChildScrollView(
         child: Column(
@@ -69,6 +90,7 @@ class AppDrawer extends StatelessWidget {
             // the menu items
             settingsItem,
             supportItem,
+            darkmodeSwitch,
           ],
         ),
       ),
