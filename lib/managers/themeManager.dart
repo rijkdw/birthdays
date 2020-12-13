@@ -25,6 +25,11 @@ class ThemeManager extends ChangeNotifier {
     if (this._mode == AppThemeMode.light)
       return ThemeData(
         primarySwatch: Colors.red,
+        buttonColor: Colors.red,
+        buttonTheme: ButtonThemeData(
+          buttonColor: Colors.red,
+          textTheme: ButtonTextTheme.normal,
+        ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       );
     else

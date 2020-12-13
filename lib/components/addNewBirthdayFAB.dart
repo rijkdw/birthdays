@@ -8,7 +8,9 @@ class AddNewBirthdayFAB extends StatelessWidget {
       onPressed: () {
         return Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (context) => NewBirthdayScreen(),
+            builder: (context) => NewBirthdayScreen(
+              appBarTitle: "New Birthday",
+            ),
           ),
         );
       },
