@@ -29,20 +29,6 @@ class BirthdayStore extends ChangeNotifier {
     birthdays.sort((a, b) => a.birthDate.compareTo(b.birthDate));
     return birthdays;
   }
-
-  List<dynamic> get birthdaysByMonth {
-    List<Birthday> birthdays = this.birthdays;
-    List<dynamic> birthdaysByMonth = [
-      DateFormat("MMMM").format(birthdays.first.birthDate),
-      birthdays.first,
-    ];
-    for (Birthday birthday in birthdays.getRange(1, birthdays.length)) {
-      if (birthday.birthDate.month != birthdaysByMonth.last.birthDate.month)
-        birthdaysByMonth.add(DateFormat("MMMM").format(birthday.birthDate));
-      birthdaysByMonth.add(birthday);
-    }
-    return birthdaysByMonth;
-  }
 }
 
 class FakeBirthdayStore extends BirthdayStore {
